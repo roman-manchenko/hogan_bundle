@@ -1,6 +1,6 @@
 {
   "name": "hogan-bundle-loader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "build hogan templates in bundles from given paths",
   "main": "index.js",
   "scripts": {
