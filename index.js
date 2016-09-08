@@ -1,7 +1,7 @@
 var fs = require('fs'),
     path = require('path'),
     hogan = require('hogan.js'),
-    rootFolder = '/templates/mustache',
+    rootFolder = path.resolve(path.dirname('')) + '/templates/mustache',
     loaderUtils = require('loader-utils');
 
 module.exports = function(source) {
@@ -13,20 +13,19 @@ module.exports = function(source) {
             return '';
         }
         var templates = {},
-            tmpl = fs.readFileSync(path.resolve(__dirname, rootFolder, tmplPath)).toString(),
-            compiled = Hogan.compile(tmpl);
+            compiled = Hogan.compile(source);
 
         compiled.partials.forEach(function (key, data) {
-            var template = fs.readFileSync(path.resolve(__dirname, rootFolder, data.name));
+            var template = fs.readFileSync(path.resolve(rootFolder, data.name));
 
-            templates[data.name] = tmpl.toString();
+            templates[data.name] = template.toString();
 
         });
         templates.forEach(function (partial, template) {
-            tmpl.replace('{{>'+ partial +'}}', template);
+            source.replace('{{>' + partial + '}}', template);
         });
 
-        return tmpl;
+        return source;
     }
     return "define(['hogan'], function (Hogan) { return '" + inline_mustache_template(query.path) + "'})";
 };
