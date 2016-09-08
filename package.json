@@ -1,0 +1,23 @@
+{
+  "name": "hogan-bundle-loader",
+  "version": "0.1.0",
+  "description": "build hogan templates in bundles from given paths",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "hogan-bundle-loader"
+  },
+  "keywords": [
+    "hogan",
+    "webpack"
+  ],
+  "dependencies": {
+    "hogan.js": "^3.0.2",
+    "loader-utils": "^0.2.4"
+  },
+  "author": "rangers",
+  "license": "MIT"
+}
